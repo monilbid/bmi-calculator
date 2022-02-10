@@ -21,7 +21,7 @@ function App() {
       return;
     }
 
-    if (heightValue < 0 || weightValue < 0) {
+    if (heightValue <= 0 || weightValue <= 0) {
       setIsBmiValid(false);
       setBmiCategory();
       return;
