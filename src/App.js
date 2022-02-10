@@ -74,20 +74,18 @@ function App() {
   return (
     <div className="App">
       <h1>BMI Calculator</h1>
-      <hr></hr>
       <div>
-
         <form>
           <label htmlFor="height">Height: </label>
           <input min="1" type="number" id="height" /> &nbsp;
-          <label><input type="radio" id="cm" name="height" value="cm" onChange={() => setHeightUnit("cm")} checked={true} />cm</label>
-          <label><input type="radio" id="in" name="height" value="in" onChange={() => setHeightUnit("in")} />in</label>
+          <label><input type="radio" id="cm" name="height" value="cm" onChange={() => setHeightUnit("cm")} checked={heightUnit === "cm"} />cm</label>
+          <label><input type="radio" id="in" name="height" value="in" onChange={() => setHeightUnit("in")} checked={heightUnit === "in"} />in</label>
           <br></br>
           <br></br>
           <label htmlFor="weight" style={{marginTop: "40px"}}>Weight: </label>
           <input min="1" type="number" id="weight" /> &nbsp;
-          <label><input type="radio" id="kg" name="weight" value="kg"  onChange={() => setWeightUnit("kg")} checked={true} />kg</label>
-          <label><input type="radio" id="lbs" name="weight" value="lbs" onChange={() => setWeightUnit("lbs")} />lbs</label>
+          <label><input type="radio" id="kg" name="weight" value="kg"  onChange={() => setWeightUnit("kg")} checked={weightUnit === "kg"} />kg</label>
+          <label><input type="radio" id="lbs" name="weight" value="lbs" onChange={() => setWeightUnit("lbs")} checked={weightUnit === "lbs"} />lbs</label>
           <br></br>
           <br></br>
           <button onClick={handleSubmit}>Submit</button>
