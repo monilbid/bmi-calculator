@@ -2,8 +2,8 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-  const [heightUnit, setHeightUnit] = useState();
-  const [weightUnit, setWeightUnit] = useState();
+  const [heightUnit, setHeightUnit] = useState("cm");
+  const [weightUnit, setWeightUnit] = useState("kg");
   const [isBmiValid, setIsBmiValid] = useState(false);
   const [bmi, setBmi] = useState();
   const [bmiCategory, setBmiCategory] = useState();
@@ -16,6 +16,12 @@ function App() {
 
     if (isNaN(heightValue) || isNaN(weightValue) || !heightUnit || !weightUnit) {
       console.log("Error");
+      setIsBmiValid(false);
+      setBmiCategory();
+      return;
+    }
+
+    if (heightValue < 0 || weightValue < 0) {
       setIsBmiValid(false);
       setBmiCategory();
       return;
@@ -74,13 +80,13 @@ function App() {
         <form>
           <label htmlFor="height">Height: </label>
           <input min="1" type="number" id="height" /> &nbsp;
-          <label><input type="radio" id="cm" name="height" value="cm" onChange={() => setHeightUnit("cm")} />cm</label>
+          <label><input type="radio" id="cm" name="height" value="cm" onChange={() => setHeightUnit("cm")} checked={true} />cm</label>
           <label><input type="radio" id="in" name="height" value="in" onChange={() => setHeightUnit("in")} />in</label>
           <br></br>
           <br></br>
           <label htmlFor="weight" style={{marginTop: "40px"}}>Weight: </label>
           <input min="1" type="number" id="weight" /> &nbsp;
-          <label><input type="radio" id="kg" name="weight" value="kg"  onChange={() => setWeightUnit("kg")} />kg</label>
+          <label><input type="radio" id="kg" name="weight" value="kg"  onChange={() => setWeightUnit("kg")} checked={true} />kg</label>
           <label><input type="radio" id="lbs" name="weight" value="lbs" onChange={() => setWeightUnit("lbs")} />lbs</label>
           <br></br>
           <br></br>
@@ -90,7 +96,7 @@ function App() {
       <div>
         <br></br>
         {
-          isBmiValid ? bmiTextGenerator() : `Please enter your data.`
+          isBmiValid ? bmiTextGenerator() : `Please enter your valid data.`
         }
       </div>
       <hr></hr>
