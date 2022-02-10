@@ -14,7 +14,7 @@ function App() {
     const heightValue = document.getElementById("height").value;
     const weightValue = document.getElementById("weight").value;
 
-    if (isNaN(heightValue) || isNaN(weightValue) || !heightUnit || !weightUnit) {
+    if (!heightValue || !weightValue || isNaN(heightValue) || isNaN(weightValue)) {
       console.log("Error");
       setIsBmiValid(false);
       setBmiCategory();
